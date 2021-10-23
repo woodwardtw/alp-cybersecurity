@@ -45,3 +45,17 @@ if ( class_exists( 'Jetpack' ) ) {
 foreach ( $understrap_includes as $file ) {
 	require_once get_theme_file_path( $understrap_inc_dir . $file );
 }
+
+
+//from https://stackoverflow.com/questions/56473929/how-to-expose-all-the-acf-fields-to-wordpress-rest-api-in-both-pages-and-custom REMEMBER TO CHANGE PREPARE TO REFLECT CUSTOM POST TYPE
+
+function acf_to_rest_api($response, $post, $request) {
+    if (!function_exists('get_fields')) return $response;
+
+    if (isset($post)) {
+        $acf = get_fields($post->id);        
+        $response->data['acf'] = $acf;       
+    }
+    return $response;
+}
+add_filter('rest_prepare_card', 'acf_to_rest_api', 10, 3);
