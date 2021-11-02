@@ -180,3 +180,173 @@ function create_type_taxonomies()
   ));
 }
 
+add_action( 'init', 'create_objective_taxonomies', 0 );
+function create_objective_taxonomies()
+{
+  // Add new taxonomy, NOT hierarchical (like tags)
+  $labels = array(
+    'name' => _x( 'objective', 'taxonomy general name' ),
+    'singular_name' => _x( 'objective', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Objectives' ),
+    'popular_items' => __( 'Popular Objectives' ),
+    'all_items' => __( 'All Objectives' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Objectives' ),
+    'update_item' => __( 'Update objective' ),
+    'add_new_item' => __( 'Add New objective' ),
+    'new_item_name' => __( 'New objective' ),
+    'add_or_remove_items' => __( 'Add or remove Objectives' ),
+    'choose_from_most_used' => __( 'Choose from the most used Objectives' ),
+    'menu_name' => __( 'Objectives' ),
+  );
+
+//registers taxonomy specific post types - default is just post
+  register_taxonomy('Objectives',array('card'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'objective' ),
+    'show_in_rest'          => true,
+    'rest_base'             => 'objective',
+    'rest_controller_class' => 'WP_REST_Terms_Controller',
+    'show_in_nav_menus' => false,    
+  ));
+}
+
+add_action( 'init', 'create_focus_taxonomies', 0 );
+function create_focus_taxonomies()
+{
+  // Add new taxonomy, NOT hierarchical (like tags)
+  $labels = array(
+    'name' => _x( 'Focus', 'taxonomy general name' ),
+    'singular_name' => _x( 'focus', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Focus' ),
+    'popular_items' => __( 'Popular Focus' ),
+    'all_items' => __( 'All Focus' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Focus' ),
+    'update_item' => __( 'Update focus' ),
+    'add_new_item' => __( 'Add New focus' ),
+    'new_item_name' => __( 'New focus' ),
+    'add_or_remove_items' => __( 'Add or remove Focus' ),
+    'choose_from_most_used' => __( 'Choose from the most used Focus' ),
+    'menu_name' => __( 'focus' ),
+  );
+
+//registers taxonomy specific post types - default is just post
+  register_taxonomy('focus',array('card'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'focus' ),
+    'show_in_rest'          => true,
+    'rest_base'             => 'focus',
+    'rest_controller_class' => 'WP_REST_Terms_Controller',
+    'show_in_nav_menus' => false,    
+  ));
+}
+
+
+
+
+function cyber_make_objectives(){
+  $terms = array('Allocate Adequate Resources Assigned',
+'Audit of Data Privacy and Security Practices',
+'Conduct Penetration Testing',
+'Conduct Vulnerability Assessment',
+'Conduct Vulnerability Testing',
+'Create Teacher and C&I Implementation Plans',
+'Demonstrate Dedicated Leadership',
+'Develop District Website Practices',
+'Develop Training and Professional Development',
+'Enforce Internet Content Filtering',
+'Enforce Student Record Policies',
+'Ensure Access Control',
+'Ensure Appropriate Teacher Communication to Parents',
+'Ensure Leadership Understanding',
+'Ensure Privacy & Confidentiality',
+'Ensure Teacher Awareness about Online Resources',
+'Ensure Teachers Model Appropriate Use',
+'Ensure Up-To-Date Policies',
+'Ensure Vetted Online Service Education',
+'Establish Account Management',
+'Evaluate External Vendors and Third Party Providers',
+'Exercise Security Oversight and Governance',
+'Implement Audit Logging',
+'Implement Beta Testing',
+'Implement Business Continuity / Disaster Recovery',
+'Implement Business Process Requirements',
+'Implement Change Management',
+'Implement Cloud Usage and Security',
+'Implement Communication of Incidents/Breaches',
+'Implement Contingency Planning',
+'Implement Control Oversight and Safeguard Assurance',
+'Implement Critical Information Asset Inventory',
+'Implement Cryptography',
+'Implement Cyber-Security Incident Response',
+'Implement Data Classification',
+'Implement Data Loss Prevention',
+'Implement Disaster Recovery Procedures',
+'Implement Enterprise Architecture, Roadmap & Emerging Technology',
+'Implement Enterprise Security Policy, Standards and Guidelines',
+'Implement Identification & Authentication',
+'Implement Information Security Risk Management',
+'Implement Malware Protection',
+'Implement Media Protection',
+'Implement Network Access and Perimeter Controls',
+'Implement Personnel Security',
+'Implement Physical and Environmental Protection',
+'Implement Portable & Remote Computing',
+'Implement Privacy Awareness and Training',
+'Implement Privacy Incident Response',
+'Implement Secure Application Development',
+'Implement Secure Configuration Management',
+'Implement Secure System Services, Acquisition and Development',
+'Implement Security Assessment and Authorization/ Technology Risk Assessments',
+'Implement Security Awareness and Training',
+'Implement Security Monitoring and Event Analysis',
+'Implement Security Systems Management',
+'Implement Share Agreement Contracts',
+'Implement Spam Filtering',
+'Implement Student Record Roles and Rights',
+'Implement System Communications Protection',
+'Implement System Configuration Hardening & Patch Management',
+'Implement Systems Currency',
+'Implement Third-Party Personnel Security',
+'Implement Vetted Online Service Process',
+'Mandate Employee Training Participation',
+'Monitor Security Compliance and Regulatory Requirements Mgmt',
+'Offer Parent Training',
+'Protect Student Records',
+'Provide Accessible Communications',
+'Provide Accessible Resources',
+'Set Clear Expectations');
+  foreach ($terms as $key => $term) {
+    var_dump(wp_insert_term($term,'Objectives'));
+    // code...
+  }
+}
+
+function cyber_make_focus(){
+  $terms = array('1 - Identify',
+    '2  - Protect',
+    '3 - Detect',
+    '4 - Respond',
+    '5 - Recover',
+    'Business',
+    'Classroom',
+    'Data Security',
+    'Leadership',
+    'Professional Development');
+  foreach ($terms as $key => $term) {
+    var_dump(wp_insert_term($term,'focus'));
+    // code...
+  }
+
+}
