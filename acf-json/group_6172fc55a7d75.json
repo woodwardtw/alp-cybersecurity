@@ -113,7 +113,7 @@
             "key": "field_617d2d6077f12",
             "label": "Focus Area",
             "name": "focus_area",
-            "type": "checkbox",
+            "type": "taxonomy",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -122,24 +122,14 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "1 - Identify": "1 - Identify",
-                "2  - Protect": "2  - Protect",
-                "3 - Detect": "3 - Detect",
-                "4 - Respond": "4 - Respond",
-                "5 - Recover": "5 - Recover",
-                "Business": "Business",
-                "Classroom": "Classroom",
-                "Data Security": "Data Security",
-                "Leadership": "Leadership",
-                "Professional Development": "Professional Development"
-            },
-            "allow_custom": 0,
-            "default_value": [],
-            "layout": "vertical",
-            "toggle": 0,
-            "return_format": "value",
-            "save_custom": 0
+            "taxonomy": "focus",
+            "field_type": "checkbox",
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0,
+            "allow_null": 0
         },
         {
             "key": "field_61a971151a65f",
@@ -193,5 +183,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1638716815
+    "modified": 1638716989
 }
